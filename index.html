@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHS | Поддержка</title>
+    <style>
+        :root {
+            --primary: #5B7CFD;
+            --accent: #FF7E67;
+            --text-light: #2D3436;
+            --text-dark: #F8F9FA;
+            --bg-light: #FFFFFF;
+            --bg-dark: #1A1A1A;
+            --surface-light: #F8F9FA;
+            --surface-dark: #2D2D2D;
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --discount: #FF4757;
+            
+            /* Light patterns */
+            --pattern-light-1: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M20 20L80 20M20 40L80 40M20 60L80 60M20 80L80 80" stroke="rgba(0,0,0,0.05)" stroke-width="1"/></svg>');
+            --pattern-light-2: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><circle cx="50" cy="50" r="40" stroke="rgba(0,0,0,0.05)" stroke-width="1" fill="none"/><circle cx="50" cy="50" r="30" stroke="rgba(0,0,0,0.05)" stroke-width="1" fill="none"/><circle cx="50" cy="50" r="20" stroke="rgba(0,0,0,0.05)" stroke-width="1" fill="none"/></svg>');
+            --pattern-light-3: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><rect x="10" y="10" width="80" height="80" stroke="rgba(0,0,0,0.05)" stroke-width="1" fill="none"/><line x1="10" y1="10" x2="90" y2="90" stroke="rgba(0,0,0,0.05)" stroke-width="1"/><line x1="90" y1="10" x2="10" y2="90" stroke="rgba(0,0,0,0.05)" stroke-width="1"/></svg>');
+            --pattern-light-4: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><polygon points="50,5 95,35 95,75 50,95 5,75 5,35" stroke="rgba(0,0,0,0.05)" stroke-width="1" fill="none"/></svg>');
+            --pattern-light-5: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M20,20 Q50,10 80,20 T100,50 T80,80 T50,100 T20,80 T0,50 T20,20" stroke="rgba(0,0,0,0.05)" stroke-width="1" fill="none"/></svg>');
+            
+            /* Dark patterns */
+            --pattern-dark-1: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M20 20L80 20M20 40L80 40M20 60L80 60M20 80L80 80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+            --pattern-dark-2: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><rect x="10" y="10" width="80" height="80" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/></svg>');
+            --pattern-dark-3: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><circle cx="20" cy="20" r="5" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/><circle cx="50" cy="20" r="5" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/><circle cx="80" cy="20" r="5" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/><circle cx="20" cy="50" r="5" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/><circle cx="50" cy="50" r="5" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/><circle cx="80" cy="50" r="5" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/><circle cx="20" cy="80" r="5" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/><circle cx="50" cy="80" r="5" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/><circle cx="80" cy="80" r="5" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/></svg>');
+            --pattern-dark-4: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M10,10 L90,90 M90,10 L10,90" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+            --pattern-dark-5: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M10,50 Q25,25 50,10 Q75,25 90,50 Q75,75 50,90 Q25,75 10,50" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/></svg>');
+        }
+
+        @keyframes colorShift {
+            0% { color: var(--primary); }
+            20% { color: #8A2BE2; }
+            40% { color: #FF7E67; }
+            60% { color: #4B0082; }
+            80% { color: #5B7CFD; }
+            100% { color: var(--primary); }
+        }
+
+        @keyframes patternAnimationLight {
+            0% { 
+                background-image: var(--pattern-light-1);
+                background-position: 0 0;
+            }
+            20% { 
+                background-image: var(--pattern-light-2);
+                background-position: 20% 20%;
+            }
+            40% { 
+                background-image: var(--pattern-light-3);
+                background-position: 40% 40%;
+            }
+            60% { 
+                background-image: var(--pattern-light-4);
+                background-position: 60% 60%;
+            }
+            80% { 
+                background-image: var(--pattern-light-5);
+                background-position: 80% 80%;
+            }
+            100% { 
+                background-image: var(--pattern-light-1);
+                background-position: 100% 100%;
+            }
+        }
+
+        @keyframes patternAnimationDark {
+            0% { 
+                background-image: var(--pattern-dark-1);
+                background-position: 0 0;
+            }
+            20% { 
+                background-image: var(--pattern-dark-2);
+                background-position: 20% 20%;
+            }
+            40% { 
+                background-image: var(--pattern-dark-3);
+                background-position: 40% 40%;
+            }
+            60% { 
+                background-image: var(--pattern-dark-4);
+                background-position: 60% 60%;
+            }
+            80% { 
+                background-image: var(--pattern-dark-5);
+                background-position: 80% 80%;
+            }
+            100% { 
+                background-image: var(--pattern-dark-1);
+                background-position: 100% 100%;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes productGlow {
+            0% { box-shadow: 0 0 0 0 rgba(91, 124, 253, 0.4); }
+            50% { box-shadow: 0 0 20px 5px rgba(91, 124, 253, 0.6); }
+            100% { box-shadow: 0 0 0 0 rgba(91, 124, 253, 0.4); }
+        }
+
+        @keyframes productGlowDark {
+            0% { box-shadow: 0 0 0 0 rgba(255, 126, 103, 0.4); }
+            50% { box-shadow: 0 0 20px 5px rgba(255, 126, 103, 0.6); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 126, 103, 0.4); }
+        }
+
+        @keyframes buttonPulse {
+            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(91, 124, 253, 0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 6px 20px rgba(91, 124, 253, 0.5); }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(91, 124, 253, 0.3); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes discountPulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        @keyframes discountShake {
+            0% { transform: rotate(-5deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0); }
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: var(--pattern-light-1);
+            background-size: 100px 100px;
+            animation: patternAnimationLight 60s infinite ease-in-out;
+        }
+
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+            background-image: var(--pattern-dark-1);
+            animation: patternAnimationDark 60s infinite ease-in-out;
+        }
+
+        .header {
+            padding: 1.5rem 2rem;
+            background: var(--bg-light);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 1s ease-out both;
+            animation-delay: 0.2s;
+        }
+
+        .dark-mode .header {
+            background: var(--bg-dark);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            margin-right: auto;
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .dark-mode .nav-link {
+            color: var(--text-dark);
+        }
+
+        .dark-mode .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .dark-mode .nav-link::after {
+            background: var(--accent);
+        }
+
+        .nav-link.active {
+            background: rgba(91, 124, 253, 0.1);
+            color: var(--primary);
+        }
+
+        .dark-mode .nav-link.active {
+            background: rgba(255, 126, 103, 0.1);
+            color: var(--accent);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+            fill: var(--text-light);
+        }
+
+        .dark-mode .cart-icon {
+            fill: var(--text-dark);
+        }
+
+        .cart-icon:hover {
+            fill: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 15px 10px;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 30px;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .menu-icon {
+            width: 30px;
+            height: 2px;
+            background: var(--text-light);
+            position: relative;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .dark-mode .menu-icon,
+        .dark-mode .menu-icon::before,
+        .dark-mode .menu-icon::after {
+            background: var(--text-dark);
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--text-light);
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .menu-icon::before { 
+            top: -8px;
+        }
+        .menu-icon::after { 
+            top: 8px;
+        }
+
+        .menu-toggle.active .menu-icon {
+            background: transparent;
+        }
+
+        .menu-toggle.active .menu-icon::before {
+            transform: rotate(-45deg) translate(-5px, 5px);
+        }
+
+        .menu-toggle.active .menu-icon::after {
+            transform: rotate(45deg) translate(-5px, -5px);
+        }
+
+        .sidebar-menu {
+            position: fixed;
+            top: 80px;
+            right: -320px;
+            width: 280px;
+            height: calc(100% - 80px);
+            background: var(--bg-light);
+            color: var(--text-light);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .dark-mode .sidebar-menu {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .sidebar-menu.active {
+            right: 0;
+        }
+
+        .menu-item {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            animation: fadeIn 0.8s ease-out both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(91, 124, 253, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover::before {
+            left: 100%;
+        }
+
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+
+        .menu-item:hover {
+            background: var(--surface-light);
+        }
+
+        .dark-mode .menu-item:hover {
+            background: var(--surface-dark);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            margin-right: 20px;
+        }
+
+        .auth-button {
+            padding: 12px 24px;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .auth-button:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .dark-mode .auth-button {
+            color: var(--text-dark);
+            border-color: var(--accent);
+        }
+
+        .dark-mode .auth-button::after {
+            background: var(--accent);
+        }
+
+        .auth-button:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(91, 124, 253, 0.3);
+        }
+
+        .auth-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(91, 124, 253, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--bg-light);
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transform-origin: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 1;
+            transition: var(--transition);
+            z-index: -1;
+            animation: productGlow 3s infinite;
+        }
+
+        .dark-mode .modal-content::before {
+            animation: productGlowDark 3s infinite;
+        }
+
+        .dark-mode .modal-content {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: var(--bg-light);
+            color: var(--text-light);
+            transition: var(--transition);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .modal input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(91, 124, 253, 0.2);
+        }
+
+        .dark-mode .modal input {
+            background: var(--bg-dark);
+            border-color: var(--surface-dark);
+            color: var(--text-dark);
+        }
+
+        .auth-links {
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        .auth-links a {
+            color: var(--primary);
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+            color: var(--accent);
+        }
+
+        .auth-links a.forgot-password {
+            color: var(--accent);
+        }
+
+        .auth-links a.forgot-password:hover {
+            color: #FF4D4D;
+        }
+
+        .auth-links a.register {
+            color: var(--primary);
+        }
+
+        .auth-links a.register:hover {
+            color: #3498DB;
+        }
+
+        .modal .login-form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal .login-form-group input {
+            margin: 10px 0;
+        }
+
+        /* Стили для страницы "Поддержка" */
+        .support-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            animation: fadeIn 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .support-title {
+            font-size: 2.8rem;
+            margin: 1rem 0;
+            color: var(--primary);
+            transition: var(--transition);
+            animation: colorShift 25s infinite ease-in-out;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .support-section {
+            background: var(--surface-light);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .support-section:hover::before {
+            opacity: 1;
+            animation: productGlow 3s infinite;
+        }
+
+        .dark-mode .support-section:hover::before {
+            animation: productGlowDark 3s infinite;
+        }
+
+        .dark-mode .support-section {
+            background: var(--surface-dark);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .dark-mode .section-title {
+            color: var(--accent);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .dark-mode .section-title::after {
+            background: var(--accent);
+        }
+
+        .support-text {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .dark-mode .support-text {
+            color: var(--text-dark);
+        }
+
+        /* Стили для чата поддержки */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: var(--surface-light);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .dark-mode .chat-container {
+            background: var(--surface-dark);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .chat-header {
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dark-mode .chat-header {
+            background: var(--accent);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .message-user {
+            align-self: flex-end;
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .dark-mode .message-user {
+            background: var(--accent);
+        }
+
+        .message-support {
+            align-self: flex-start;
+            background: rgba(91, 124, 253, 0.1);
+            border-bottom-left-radius: 5px;
+            color: var(--text-light);
+        }
+
+        .dark-mode .message-support {
+            background: rgba(255, 126, 103, 0.1);
+            color: var(--text-dark);
+        }
+
+        .chat-input-container {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            background: var(--surface-light);
+        }
+
+        .dark-mode .chat-input-container {
+            background: var(--surface-dark);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 25px;
+            outline: none;
+            font-size: 1rem;
+            background: var(--bg-light);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .dark-mode .chat-input {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(91, 124, 253, 0.2);
+        }
+
+        .dark-mode .chat-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(255, 126, 103, 0.2);
+        }
+
+        .send-button {
+            margin-left: 1rem;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .dark-mode .send-button {
+            background: var(--accent);
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(91, 124, 253, 0.3);
+        }
+
+        .dark-mode .send-button:hover {
+            box-shadow: 0 4px 12px rgba(255, 126, 103, 0.3);
+        }
+
+        .send-button:active {
+            transform: translateY(0);
+        }
+
+        /* Стили для FAQ */
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .dark-mode .faq-item {
+            background: var(--surface-dark);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(91, 124, 253, 0.1);
+        }
+
+        .dark-mode .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(255, 126, 103, 0.1);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .dark-mode .faq-question {
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-light);
+            margin-top: 0;
+        }
+
+        .dark-mode .faq-answer {
+            color: var(--text-dark);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            margin-top: 1rem;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Контактная информация */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(91, 124, 253, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dark-mode .contact-method {
+            background: rgba(255, 126, 103, 0.1);
+        }
+
+        .contact-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(91, 124, 253, 0.15);
+        }
+
+        .dark-mode .contact-method:hover {
+            box-shadow: 0 10px 25px rgba(255, 126, 103, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .dark-mode .contact-icon {
+            color: var(--accent);
+        }
+
+        .contact-details h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .dark-mode .contact-details h4 {
+            color: var(--accent);
+        }
+
+        .contact-details p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .dark-mode .contact-details p {
+            color: var(--text-dark);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+            color: #666;
+            animation: fadeIn 1.4s ease-out both;
+            animation-delay: 1.4s;
+            margin-top: 4rem;
+        }
+
+        .dark-mode .footer {
+            color: #aaa;
+        }
+
+        .creator-signature {
+            font-size: 0.8rem;
+            color: #999;
+            transition: all 0.6s ease;
+            cursor: default;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .dark-mode .creator-signature {
+            color: #777;
+        }
+
+        .creator-signature:hover, .creator-signature:focus {
+            animation: colorPulse 3s infinite alternate;
+            text-shadow: 0 0 8px rgba(138, 43, 226, 0.4);
+        }
+
+        @keyframes colorPulse {
+            0% {
+                color: #8A2BE2;
+            }
+            50% {
+                color: var(--primary);
+            }
+            100% {
+                color: #4B0082;
+            }
+        }
+
+        .theme-switcher {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            z-index: 100;
+            animation: fadeIn 1s ease-out both;
+            animation-delay: 0.8s;
+        }
+
+        .theme-switcher:hover {
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+        }
+
+        .theme-switcher:active {
+            transform: scale(0.95) rotate(180deg);
+        }
+
+        /* Центрирование полей ввода в модальных окнах */
+        .modal .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .modal .form-group input {
+            width: 80%;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo" onclick="window.location.href='https://allgameg87.github.io/AHS/'">
+            <img src="logo-light.png" alt="AHS" class="logo-img" id="logoImage">
+        </div>
+        <div class="nav-links">
+            <a href="https://allgameg87.github.io/AHS-Catalog/" class="nav-link">Каталог</a>
+            <a href="https://allgameg87.github.io/AHS-Skidki/" class="nav-link">Скидки</a>
+            <a href="https://allgameg87.github.io/AHS-Poddergka/" class="nav-link active">Поддержка</a>
+        </div>
+        <div class="header-actions">
+            <div class="auth-buttons" id="authButtons"></div>
+            <svg class="cart-icon" viewBox="0 0 24 24" onclick="window.location.href='https://allgameg87.github.io/AHS-Korzina/'">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <div class="menu-icon"></div>
+            </button>
+        </div>
+    </header>
+
+    <nav class="sidebar-menu">
+        <div class="menu-item" onclick="window.location.href='https://allgameg87.github.io/AHS-Izbrannoe/'">Избранное</div>
+        <div class="menu-item" onclick="window.location.href='https://allgameg87.github.io/AHS-Skidki/'">Скидки</div>
+        <div class="menu-item" onclick="window.location.href='https://allgameg87.github.io/AHS-Korzina/'">Корзина</div>
+        <div class="menu-item" onclick="window.location.href='https://allgameg87.github.io/AHS-O-Saite/'">О сайте</div>
+        <div class="menu-item" onclick="window.location.href='https://allgameg87.github.io/AHS-Poddergka/'">Поддержка</div>
+    </nav>
+
+    <!-- Модальные окна -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Вход</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Пароль" required>
+                    <div class="auth-links">
+                        <a class="forgot-password" onclick="showForgotPassword()">Забыли пароль?</a>
+                    </div>
+                </div>
+                <div class="login-actions">
+                    <button type="submit" class="auth-button">Войти</button>
+                    <div class="auth-links">
+                        Нету аккаунта?<br>
+                        <a class="register" onclick="showModal('register')">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="loginConfirmModal" class="modal">
+        <div class="modal-content">
+            <h2>Подтверждение входа</h2>
+            <p>На вашу почту отправлен код подтверждения</p>
+            <div class="form-group">
+                <input type="text" class="code-input" maxlength="5" required>
+            </div>
+            <button class="auth-button" onclick="confirmLogin()">Подтвердить</button>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Имя" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Пароль" required>
+                </div>
+                <button type="submit" class="auth-button">Продолжить</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <h2>Подтверждение</h2>
+            <p>На вашу почту отправлен код подтверждения</p>
+            <div class="form-group">
+                <input type="text" class="code-input" maxlength="5" required>
+            </div>
+            <button class="auth-button" onclick="verifyCode()">Подтвердить</button>
+        </div>
+    </div>
+
+    <main class="support-container">
+        <h1 class="support-title">Служба поддержки</h1>
+        
+        <section class="support-section">
+            <h2 class="section-title">Чат поддержки</h2>
+            <p class="support-text">
+                Напишите нам в чат, и наш оператор ответит на все ваши вопросы в течение 5 минут.
+            </p>
+            
+            <div class="chat-container">
+                <div class="chat-header">
+                    <span>💬</span>
+                    <span>Чат поддержки AHS</span>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Приветственное сообщение будет добавлено через JavaScript -->
+                </div>
+                
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Напишите ваш вопрос...">
+                    <button class="send-button" id="sendButton">Отправить</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="support-section">
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>Как оформить заказ?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Для оформления заказа добавьте товары в корзину, перейдите в корзину и нажмите "Оформить заказ". Затем заполните данные доставки и выберите способ оплаты.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>Какие способы оплаты доступны?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Мы принимаем банковские карты (Visa, Mastercard, МИР), электронные деньги (QIWI, Яндекс.Деньги, WebMoney), а также наличные при получении.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>Как отследить мой заказ?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>После отправки заказа вам на email придет трек-номер для отслеживания. Вы также можете проверить статус заказа в личном кабинете.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>Как вернуть товар?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Вы можете вернуть товар в течение 14 дней после получения. Для этого свяжитесь с нашей поддержкой, и мы расскажем о дальнейших действиях.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span>Есть ли у вас физические магазины?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>На данный момент у нас только интернет-магазин, но вы можете забрать заказ из нашего пункта выдачи в Москве по адресу: ул. Модная, д. 123.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="support-section">
+            <h2 class="section-title">Контактная информация</h2>
+            <p class="support-text">
+                Вы можете связаться с нами любым удобным способом:
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-method">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>support@ahs-store.ru</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <h4>Телефон</h4>
+                        <p>+7 (800) 123-45-67</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">🕒</div>
+                    <div class="contact-details">
+                        <h4>Часы работы</h4>
+                        <p>Пн-Пт: 9:00 - 21:00<br>Сб-Вс: 10:00 - 18:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 AHS. Все права защищены.</p>
+        <p class="creator-signature" tabindex="0">Сделал Чиркин Е.А.</p>
+    </footer>
+
+    <button class="theme-switcher">🌓</button>
+
+    <script>
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let pendingUser = null;
+        let verificationCode = '';
+        const themeButton = document.querySelector('.theme-switcher');
+        const logoImage = document.getElementById('logoImage');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        let welcomeMessageShown = false;
+
+        // Примеры ответов поддержки
+        const supportResponses = [
+            "Спасибо за ваш вопрос! Давайте я помогу вам с этим.",
+            "Для решения этой проблемы вам нужно...",
+            "Этот вопрос часто задают. Ответ на него вы можете найти в разделе FAQ.",
+            "Я передам ваш вопрос специалисту и мы свяжемся с вами в ближайшее время.",
+            "Вы можете решить эту проблему следующим образом..."
+        ];
+
+        function generateCode() {
+            return Math.floor(10000 + Math.random() * 90000).toString();
+        }
+
+        function updateAuthButtons() {
+            const authButtons = document.getElementById('authButtons');
+            authButtons.innerHTML = currentUser ? 
+                `<div class="user-info">
+                    <span>${currentUser?.name || 'Пользователь'}</span>
+                    <button class="logout-btn" onclick="logout()">Выйти</button>
+                </div>` :
+                `<button class="auth-button" onclick="showModal('login')">Вход/Регистрация</button>`;
+        }
+
+        function register(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const email = formData.get('email');
+            
+            if(users.some(u => u.email === email)) {
+                alert('Этот email уже зарегистрирован!');
+                return;
+            }
+
+            pendingUser = {
+                name: formData.get('text'),
+                email: email,
+                password: formData.get('password'),
+                verified: false
+            };
+
+            verificationCode = generateCode();
+            alert(`Код подтверждения: ${verificationCode} (В реальном приложении будет отправлен на email)`);
+            document.getElementById('registerModal').style.display = 'none';
+            showModal('code');
+        }
+
+        function verifyCode() {
+            const inputCode = document.querySelector('.code-input').value;
+            if(inputCode === verificationCode) {
+                users.push(pendingUser);
+                localStorage.setItem('users', JSON.stringify(users));
+                currentUser = pendingUser;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                updateAuthButtons();
+                document.getElementById('codeModal').style.display = 'none';
+                alert('Регистрация завершена!');
+            } else {
+                alert('Неверный код подтверждения!');
+            }
+        }
+
+        function login(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const user = users.find(u => 
+                u.email === formData.get('email') && 
+                u.password === formData.get('password')
+            );
+            
+            if(user) {
+                if(!user.verified) {
+                    alert('Аккаунт не подтвержден!');
+                    return;
+                }
+                verificationCode = generateCode();
+                alert(`Код подтверждения: ${verificationCode}`);
+                document.getElementById('loginModal').style.display = 'none';
+                showModal('loginConfirm');
+            } else {
+                alert('Неверные данные!');
+            }
+        }
+
+        function confirmLogin() {
+            const inputCode = document.querySelector('#loginConfirmModal .code-input').value;
+            if(inputCode === verificationCode) {
+                currentUser = users.find(u => u.email === pendingUser?.email);
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                updateAuthButtons();
+                document.getElementById('loginConfirmModal').style.display = 'none';
+            } else {
+                alert('Неверный код подтверждения!');
+            }
+        }
+
+        function showForgotPassword() {
+            alert('Функция восстановления пароля в разработке');
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            updateAuthButtons();
+        }
+
+        function toggleTheme() {
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            themeButton.textContent = isDarkMode ? '🌞' : '🌙';
+            updateLogo(isDarkMode);
+        }
+
+        function updateLogo(isDarkMode) {
+            logoImage.src = isDarkMode ? 'logo-dark.png' : 'logo-light.png';
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const isDarkMode = savedTheme === 'dark';
+            
+            if(isDarkMode) {
+                document.body.classList.add('dark-mode');
+                themeButton.textContent = '🌞';
+            }
+            
+            updateLogo(isDarkMode);
+        }
+
+        function showModal(type) {
+            document.getElementById(`${type}Modal`).style.display = 'block';
+        }
+
+        function toggleMenu() {
+            document.querySelector('.menu-toggle').classList.toggle('active');
+            document.querySelector('.sidebar-menu').classList.toggle('active');
+        }
+
+        function toggleFAQ(item) {
+            item.classList.toggle('active');
+        }
+
+        function addMessage(text, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'message-user' : 'message-support'}`;
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Имитация ответа поддержки
+                setTimeout(() => {
+                    const randomResponse = supportResponses[Math.floor(Math.random() * supportResponses.length)];
+                    addMessage(randomResponse, false);
+                }, 1000 + Math.random() * 2000);
+            }
+        }
+
+        function showWelcomeMessage() {
+            if (!welcomeMessageShown) {
+                addMessage("Здравствуйте! Чем могу помочь?", false);
+                welcomeMessageShown = true;
+            }
+        }
+
+        // Обработчики событий для чата
+        sendButton.addEventListener('click', sendMessage);
+        
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        window.onclick = function(e) {
+            if(e.target.className === 'modal') {
+                e.target.style.display = 'none';
+            }
+            if(!e.target.closest('.sidebar-menu') && !e.target.closest('.menu-toggle')) {
+                document.querySelector('.sidebar-menu').classList.remove('active');
+                document.querySelector('.menu-toggle').classList.remove('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            updateAuthButtons();
+            document.getElementById('registerForm').onsubmit = register;
+            document.getElementById('loginForm').onsubmit = login;
+            themeButton.addEventListener('click', toggleTheme);
+            
+            // Показываем приветственное сообщение при загрузке страницы
+            showWelcomeMessage();
+        });
+    </script>
+</body>
+</html>
